@@ -33,6 +33,6 @@ const checkToken = async (token,logOutUser) => {
 }
 
 
-const usuarioService = {getUsuario, checkToken, getValoraciones, getRating, getUsuarioByCorreo}
+const usuarioService = {getUsuario, checkToken, getUsuarioByCorreo}
 
 export default usuarioService;
