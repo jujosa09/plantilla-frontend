@@ -3,10 +3,8 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import NavBar from "../NavBar";
 import productoService from "../../service/productoService";
-import Swal from 'sweetalert2';
 import GMap from '../maps/GoogleMap';
 import '../../assets/css/productPage.css'
-import routerService from '../../service/routerService';
 import ImageNotFound from '../../assets/images/imagenotfound.jpg'
 
 export default function PaginaProducto() {

@@ -1,6 +1,5 @@
 import routerService from '../../service/routerService'
 import ImageNotFound from '../../assets/images/imagenotfound.jpg'
-import chatService from '../../service/chatService'
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import productoService from '../../service/productoService';
