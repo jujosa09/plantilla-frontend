@@ -5,7 +5,6 @@ import Productos from './components/productos/paginaProductos.jsx'
 import Usuario from './components/usuarios/paginaUsuarios.jsx'
 import PaginaProducto from './components/productos/paginaProducto.jsx'
 import PaginaPrincipal from './components/principal/Principal.jsx'
-import App from './App.jsx'
 import './assets/css/index.css'
 import { GoogleOAuthProvider } from '@react-oauth/google';
 import UploadProduct from './components/productos/upload_producto.jsx'
