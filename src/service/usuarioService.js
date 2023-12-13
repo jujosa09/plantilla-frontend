@@ -1,7 +1,8 @@
 import Axios from 'axios';
 
 const getUsuarioByCorreo = async (correo, setUsuario) => {
-    await Axios.get("https://plantilla-backend.vercel.app/usuario?correo=" + correo)
+    const config = {headers: {'Access-Control-Allow-Origin': '*'}};
+    await Axios.get("https://plantilla-backend.vercel.app/usuario?correo=" + correo,config)
     .then ((res) => {
         setUsuario(res.data)
     })
@@ -9,7 +10,8 @@ const getUsuarioByCorreo = async (correo, setUsuario) => {
 
 
 const getUsuario = async (token, setUsuario) => {
-    let result = await Axios.get("https://plantilla-backend.vercel.app/usuario/checkOrCreate?token=" + token);
+    const config = {headers: {'Access-Control-Allow-Origin': '*'}};
+    let result = await Axios.get("https://plantilla-backend.vercel.app/usuario/checkOrCreate?token=" + token,config);
     if(result.status === 200){
         setUsuario(JSON.stringify(result.data));
     }
@@ -18,7 +20,8 @@ const getUsuario = async (token, setUsuario) => {
 
 const checkToken = async (token,logOutUser) => {
     try{
-        let result = await Axios.get("https://plantilla-backend.vercel.app/usuario/checkToken?token=" + token)
+        const config = {headers: {'Access-Control-Allow-Origin': '*'}};
+        let result = await Axios.get("https://plantilla-backend.vercel.app/usuario/checkToken?token=" + token,config)
 
         //En caso de que el token no sea valido se cierra la sesion
         if(result.status !== 200){
