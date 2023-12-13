@@ -1,7 +1,6 @@
 import routerService from '../../service/routerService'
 import ImageNotFound from '../../assets/images/imagenotfound.jpg'
 import chatService from '../../service/chatService'
-import usuarioService from '../../service/usuarioService';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import productoService from '../../service/productoService';
@@ -19,34 +18,11 @@ export default function producto({producto}) {
     let params = useParams();
     let usuario = params.usuario;
 
-    const user = localStorage.getItem("email");
-    
+    const user = localStorage.getItem("email");    
 
-    
-    const [usuarioValoracion, setUsuario] = useState({});
-
-    useEffect(() => {
-        if (producto.puja) {
-            // Lógica que se ejecuta solo si producto.puja existe
-            usuarioService.getUsuarioByCorreo(producto.puja.usuario, setUsuario);
-        }
-    }, [producto.puja]);
-    
-
-    const valorado =
-        producto &&
-        producto.puja &&
-        producto.puja.usuario &&
-        usuarioValoracion.valoracion &&
-        Array.isArray(usuarioValoracion.valoracion) &&
-        usuarioValoracion.valoracion.find(valoracion => 
-            valoracion.valorador === producto.usuario && valoracion.producto === producto._id
-    );
-
-    
-    const handleEliminarProducto = async (productoId, user) => {
+    const handleEliminarProducto = async (productoId) => {
         // Lógica para eliminar el producto
-        await productoService.deleteProduct(productoId, user);
+        await productoService.deleteProduct(productoId);
       
         // Redireccionar a la página de productos (o donde sea necesario)
         window.location.reload();
@@ -87,20 +63,6 @@ export default function producto({producto}) {
         </div>
         <div className='card-body' style={{width: '100%', marginTop: "20px", marginBottom: "0px"}}>
             <br/>
-            {producto.usuario !== user && <button className='button-anuncio contacta' onClick={() => {
-                chatService.openChat(producto._id +"_" + producto.usuario + "_" + user)}}>Contacta</button>
-            }
-            { producto.usuario === user && subastaCerrada && producto.puja &&(
-                    <button type="button" 
-                    className='button-anuncio valora'
-                    onClick={() => {routerService.moveToValorarPage(producto._id, producto.usuario, producto.puja.usuario)}}
-                    disabled={valorado !== undefined } 
-                    
-                    >
-                    Valorar
-                    </button>
-            )}
-
             { producto.usuario === user && producto.puja === undefined && <button className='button-anuncio eliminar' 
                 onClick={() => handleEliminarProducto(producto._id, user)}>Eliminar</button>
             }

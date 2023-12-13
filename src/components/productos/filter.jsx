@@ -37,8 +37,6 @@ export default function Filter({setProductos, misProductos, usuario, setFiltrand
                 <option value="Fecha_Desc" defaultChecked>Fecha Descendente</option>
                 <option value="Precio_Asc">Precio Ascendente</option>
                 <option value="Precio_Desc">Precio Descendente</option>
-                <option value="Puja_Asc">Última Puja Ascendente</option>
-                <option value="Puja_Desc">Última Puja Descendente</option>
                 <option value="Activa">Activa</option>
                 <option value="Finalizada">Inactiva</option>
             </select>
