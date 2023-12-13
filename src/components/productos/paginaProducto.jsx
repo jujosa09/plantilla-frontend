@@ -81,13 +81,6 @@ export default function PaginaProducto() {
                             <p className="lead">{producto.descripcion}</p>
                             <hr/>
                             <div className='row'><p style={{float: 'left'}}>Subasta iniciada con un precio de {producto.precioInicial} €</p></div>
-                            <div className='row'>
-                                {
-                                    subastaCerrada?
-                                    :
-                                    <p style={{float: 'left'}}>Esta subasta termina el {cierreSubasta.toString().substring(7, 10)} {cierreSubasta.toString().substring(4,7)} {cierreSubasta.toString().substring(11,15)} (Quedan {diffDays} días). </p>
-                                }
-                            </div>
                         </div>
                     </div>
                 </div>
