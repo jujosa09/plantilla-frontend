@@ -1,0 +1,57 @@
+@import url(https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css);
+
+h2.title {
+	color: #000;
+	font-size: 26px;
+	font-weight: 300;
+	text-align: center;
+	text-transform: uppercase;
+	position: relative;
+	margin: 90px 0 60px;
+}
+
+h2.title::after {
+	content: "";
+	width: 250px;
+	position: absolute;
+	margin: 0 auto;
+	height: 4px;
+	border-radius: 1px;
+	left: 0;
+	right: 0;
+	bottom: -20px;
+    background: #00afe9;
+}
+
+div.chats-div {
+	background-color: rgb(227, 227, 227);
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    overflow: auto;
+}
+
+.img-chat{
+    margin-right: 15px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.chat{
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px;
+    border: 2px solid black;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.subject-chat{
+    font-size: larger;
+}
+

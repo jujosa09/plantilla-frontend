@@ -1,0 +1,48 @@
+img#img-producto {
+    border-top-left-radius: 0.5rem;
+    border-bottom-left-radius: 0.5rem;
+    font-size: 0.8rem;
+    position: relative;
+    width: 100%; /* Cambio a 100% para que la imagen sea completamente responsiva dentro de su contenedor */
+    height: auto; /* Mantiene la relación de aspecto */
+    max-width: 150px; /* Un máximo para que no se vea demasiado grande en pantallas grandes */
+    display: block; /* Asegúrate de que la imagen no esté en línea */
+    margin: 0 auto; /* Centra la imagen si es más pequeña que el contenedor */
+}
+
+div#titulo-pujas {
+    position: relative;
+    top: 30px;
+}
+
+div.finalizada-aviso-imagen-pujas {
+    position: absolute; 
+    top: 0;
+    left: 0;  
+    background-color: #e33030;
+    color: #fff;
+    transform: rotate(-20deg);
+    font-size: 8px;
+    font-weight: 600;
+    border-radius: 3px;
+    text-transform: uppercase;
+    padding: 2px 5px; 
+}
+
+@media (max-width: 768px) {
+    img#img-producto {
+        max-width: 300px; 
+    }
+
+}
+
+@media (max-width: 480px) {
+    img#img-producto {
+        max-width: 200px; 
+    }
+
+    div.finalizada-aviso-imagen-pujas {
+        font-size: 6px; 
+        transform: rotate(-45deg); 
+    }
+}

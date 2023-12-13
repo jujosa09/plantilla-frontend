@@ -1,0 +1,124 @@
+
+
+@media (min-width: 0) {
+   /* No es necesario especificar (min-width: 0) ya que es el valor predeterminado */
+   .g-pa-30 {
+      padding: 2.14286rem !important;
+   }
+}
+
+.g-bg-secondary {
+   background-color: #fafafa !important;
+}
+
+.u-shadow-v18 {
+   box-shadow: 0 5px 10px -6px rgba(0, 0, 0, 0.15);
+}
+
+.g-color-gray-dark-v4 {
+   color: #777 !important;
+}
+
+.g-font-size-12 {
+   font-size: 0.85714rem !important;
+}
+
+.media-comment {
+   margin-top: 20px;
+}
+
+div#comentario {
+   min-height: 35%;
+   height: auto;
+   width: 100%;
+}
+
+img#img-valorador {
+   border-top-left-radius: 0.5rem;
+   border-bottom-left-radius: 0.5rem;
+   position: absolute;
+   top: 10%;
+   left: 2%;
+   width: 50px
+}
+
+div#valoracion {
+   border-radius: 0.5rem; /* Puedes combinar los bordes en una sola regla */
+   font-size: 0.8rem;
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height:100%;
+}
+
+.custom-rating .star {
+   font-size: 2px; /* Adjust the font size as needed */
+ }
+
+h5#valorador {
+   font-size: 1rem;
+   position: absolute;
+   top: 0.5rem;
+   left: 28%;
+}
+
+p#descripcion {
+   font-size: 0.8rem;
+   margin-left: auto;
+   text-align: justify;
+   max-width: 300px;
+   max-height: 100px;
+   overflow: auto;
+}
+
+div#starsCalidad,
+div#starsFiabilidad {
+   position: absolute;
+   left: 2%;
+}
+
+div#starsCalidad {
+   top: 60%;
+}
+
+div#starsFiabilidad {
+   top: 80%;
+}
+
+@media screen and (max-width: 1080px) {
+   div#comentario{
+      height: 100%;
+   }
+   div#valoracion{
+      width: 100%;
+      height: 100%;
+    }
+   p#descripcion{
+      font-size: 0.6rem;
+      overflow: auto;
+      position: relative;
+      left: 10%;
+      top: 30%;
+      max-width: 270px;
+      max-height: 40px;
+      overflow-y: auto;
+   }
+   div#starsCalidad,
+   div#starsFiabilidad {
+      font-size: 0.5rem;
+      size: 0.9rem;
+   }
+   .custom-rating .star {
+      size: sm /* Adjust the font size as needed */
+    }
+
+   h5#valorador {
+      font-size: 0.6rem;
+   }
+   img#img-valorador{
+      width: 30px;
+   }
+}
+
+ 
