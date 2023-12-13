@@ -16,20 +16,12 @@ export default function paginaUsuario() {
         usuarioService.getUsuarioByCorreo(correo, setUsuario);
     }, []);    
 
-  
-
-    const [rating, setRating] = useState([]);
-
-    useEffect(() => {
-        usuarioService.getRating(correo, setRating);
-        
-    }, [correo]);
-    
+   
     return(
         <>
          <div className='container-fluid'>
             <NavBar ubicacion={user.correo === correo ? 'Mi perfil' : ''}/>
-            {user && rating && <Usuario usuario={user} valoraciones={user.valoracion} rating={rating.usuario} />}
+            {user && <Usuario usuario={user}/>}
         </div>
         </>
         
