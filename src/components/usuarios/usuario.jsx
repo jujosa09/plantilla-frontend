@@ -2,7 +2,7 @@ import '../../assets/css/profile.css';
 
 
 
-export default function Usuario({ usuario}) {
+export default function Usuario({usuario}) {
     
     return (
         <>
