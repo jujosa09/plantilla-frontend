@@ -13,18 +13,17 @@ export default function paginaProductos({ misProductos }) {
     const [productos, setProductos] = useState([]);
     const [filtrando, setFiltrando] = useState(false);
     const [coordenadas, setCoordenadas] = useState([]);
-    const token = localStorage.getItem("token")
 
     useEffect(() => {
         if (misProductos) {
-            productoService.getProductosByUsuario(setProductos, usuario, token);
+            productoService.getProductosByUsuario(setProductos, usuario);
         } else {
-            productoService.getProductos(setProductos, token);
+            productoService.getProductos(setProductos);
         }
     }, []);
 
     useEffect(() => {
-        productoService.getCoordenadasListByCodPostal(productos, setCoordenadas, token)
+        productoService.getCoordenadasListByCodPostal(productos, setCoordenadas)
     }, [productos])
 
     return(

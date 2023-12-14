@@ -21,7 +21,7 @@ export default function producto({producto}) {
 
     const handleEliminarProducto = async (productoId) => {
         // Lógica para eliminar el producto
-        await productoService.deleteProduct(productoId, token);
+        await productoService.deleteProduct(productoId);
       
         // Redireccionar a la página de productos (o donde sea necesario)
         window.location.reload();

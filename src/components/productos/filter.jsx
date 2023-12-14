@@ -6,14 +6,12 @@ export default function Filter({setProductos, misProductos, usuario, setFiltrand
     const [orden, setOrden] = useState('Fecha_Desc');
     const [texto, setTexto] = useState('');
 
-    const token = localStorage.getItem("token")
-
     useEffect(() => {
         if (orden.length !== 0 || texto.length !== 0) {
             if (misProductos) {
-                productoService.filtrarProductos(setProductos, usuario, texto, orden, token);
+                productoService.filtrarProductos(setProductos, usuario, texto, orden);
             } else {
-                productoService.filtrarProductos(setProductos, undefined, texto, orden, token);
+                productoService.filtrarProductos(setProductos, undefined, texto, orden);
             }
         }
 

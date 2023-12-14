@@ -1,100 +1,70 @@
 import Axios from 'axios';
-import logOut from '../components/oauth/GoogleOauth'
-const getProductos = async (setProductos, token) => {
-    const config = {headers: {'Access-Control-Allow-Origin': '*'}, Authorization: `Bearer ${token}`};
-    await Axios.get("https://plantilla-backend.vercel.app/producto", config)
+
+const getProductos = async (setProductos) => {
+    const config = {headers: {'Access-Control-Allow-Origin': '*'}};
+    await Axios.get("https://plantilla-backend.vercel.app/producto",config)
     .then((res) => {
-      if(res.status != 401){
         setProductos(res.data.productos)
-      }else{
-          logOut()
-      }
     })
 }
 
-const filtrarProductos = async (setProductos, usuario, texto, orden, token) => {
-  const config = {headers: {'Access-Control-Allow-Origin': '*'}, Authorization: `Bearer ${token}`};
+const filtrarProductos = async (setProductos, usuario, texto, orden) => {
+  const config = {headers: {'Access-Control-Allow-Origin': '*'}};
   await Axios.post("https://plantilla-backend.vercel.app/producto/filter", {
     usuario: usuario,
     texto: texto,
     orden: orden
-  }, config).then((res) => {
-    if(res.status != 401){
-      setProductos(res.data.productos)
-    }else{
-        logOut()
-    }
+  }).then((res) => {
+    setProductos(res.data.productos)
   });
 }
 
-const getProductoById = async (setProducto, idProducto, token) => {
-  const config = {headers: {'Access-Control-Allow-Origin': '*'}, Authorization: `Bearer ${token}`};
-  await Axios.get("https://plantilla-backend.vercel.app/producto/" + idProducto, config)
+const getProductoById = async (setProducto, idProducto) => {
+  const config = {headers: {'Access-Control-Allow-Origin': '*'}};
+  await Axios.get("https://plantilla-backend.vercel.app/producto/" + idProducto,config)
   .then((res) => {
-
-      if(res.status != 401){
-        setProducto(res.data.producto)
-      }else{
-          logOut()
-      }
+      setProducto(res.data.producto)
   })
 }
 
-const getProductosByUsuario = async (setProductos, usuario, token) => {
-  const config = {headers: {'Access-Control-Allow-Origin': '*'}, Authorization: `Bearer ${token}`};
-  await Axios.get("https://plantilla-backend.vercel.app/producto?usuario=" + usuario, config)
+const getProductosByUsuario = async (setProductos, usuario) => {
+  const config = {headers: {'Access-Control-Allow-Origin': '*'}};
+  await Axios.get("https://plantilla-backend.vercel.app/producto?usuario=" + usuario,config)
   .then((res) => {
-    if(res.status != 401){
       setProductos(res.data.productos)
-    }else{
-        logOut()
-    }
   })
 }
 
 
-const addProduct = async (productoFormData, token) => {
+const addProduct = async (productoFormData) => {
   try {
-    const config = {headers: {'Access-Control-Allow-Origin': '*'}, Authorization: `Bearer ${token}`};
+    const config = {headers: {'Access-Control-Allow-Origin': '*'}};
     const response = await Axios.post("https://plantilla-backend.vercel.app/producto", productoFormData,config);
-    if(response.status != 401){
-      return {status: response.data.status};
-    }else{
-        logOut()
-    }
+    return {status: response.data.status};
   } catch (error) {
     return {status: error.response.status, mensaje: error.response.data.message};
   }
 };
 
 
-  const deleteProduct = async (producto, token) => {
+  const deleteProduct = async (producto) => {
     try {
-      const config = {headers: {'Access-Control-Allow-Origin': '*'}, Authorization: `Bearer ${token}`};
+      const config = {headers: {'Access-Control-Allow-Origin': '*'}};
       const response = await Axios.delete('https://plantilla-backend.vercel.app/producto/' + producto,config);
-      if(response.status != 401){
-        return {status: response.data.status}
-      }else{
-          logOut()
-      }
+      return {status: response.data.status}
     } catch (error) {
         console.error('Error al eliminar el producto:', error);
     }
 };
 
 
-const getCoordenadasByCodPostal = async (producto, setCoordenadas, token) => {
+const getCoordenadasByCodPostal = async (producto, setCoordenadas) => {
   try {
-    const config = {headers: {'Access-Control-Allow-Origin': '*'}, Authorization: `Bearer ${token}`};
+    const config = {headers: {'Access-Control-Allow-Origin': '*'}};
     if(producto.direccion && producto.direccion !== 29080){
       await Axios.get('https://plantilla-backend.vercel.app/carbono/coord?codPostal=' + producto.direccion,config).then((res) => {
-        if(res.status != 401){
-          res.data.title = producto.nombre
-          setCoordenadas(res.data)
-        }else{
-            logOut()
-        }
-
+        res.data.title = producto.nombre
+        setCoordenadas(res.data)
       })
     }
   } catch (error) {
@@ -103,20 +73,16 @@ const getCoordenadasByCodPostal = async (producto, setCoordenadas, token) => {
 }
 
 
-const getCoordenadasListByCodPostal = async (productos, setCoordenadas, token) => {
+const getCoordenadasListByCodPostal = async (productos, setCoordenadas) => {
   try {
-    const config = {headers: {'Access-Control-Allow-Origin': '*'}, Authorization: `Bearer ${token}`};
+    const config = {headers: {'Access-Control-Allow-Origin': '*'}};
     let coordenadas = [];
 
     for (const producto of productos) {
       if(producto.direccion && producto.direccion !== 29080){
         const response = await Axios.get('https://plantilla-backend.vercel.app/carbono/coord?codPostal=' + producto.direccion, config);
-        if(response.status != 401){
-          response.data.title = producto.nombre
-          coordenadas.push(response.data);
-        }else{
-            logOut()
-        }
+        response.data.title = producto.nombre
+        coordenadas.push(response.data);
       }
       
     }

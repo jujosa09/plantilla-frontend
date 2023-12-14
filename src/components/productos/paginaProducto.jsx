@@ -14,8 +14,6 @@ export default function PaginaProducto() {
     const [producto, setProducto] = useState([]);
     const [coordenadas, setCoordenadas] = useState([]);
 
-    const token = localStorage.getItem("token")
-
     let param = useParams();
     let idProducto = param.id;
 
@@ -23,14 +21,14 @@ export default function PaginaProducto() {
 
     useEffect(() => {
         const fetchData = async() => {
-            await productoService.getProductoById(setProducto, idProducto, token);
+            await productoService.getProductoById(setProducto, idProducto);
         }
         fetchData();
     }, [])
 
     useEffect(() => {
         if (producto.length !== 0) {
-            productoService.getCoordenadasByCodPostal(producto, setCoordenadas, token)
+            productoService.getCoordenadasByCodPostal(producto, setCoordenadas)
         }
     }, [producto])
 
