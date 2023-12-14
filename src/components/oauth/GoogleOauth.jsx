@@ -12,7 +12,7 @@ export default function GoogleOAuth() {
 
     const login = useGoogleLogin({
         onSuccess: (codeResponse) => setUser(codeResponse),
-        onError: (error) => console.log('Login failed: ', error)
+        onError: (error) => console.log('Login failed: ', error),
     });
 
     const logOut = () => {
@@ -20,12 +20,12 @@ export default function GoogleOAuth() {
         setProfile([]);
         setUser([]);
         localStorage.clear();
-        //appService.moveToMainPage();
+        appService.moveToMainPage();
     };
 
     useEffect(() => {
         if (user.length !== 0) {
-        axios.get(`https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`, {
+        axios.get(`https://www.googleapis.com/oauth2/v3/userinfo`, {
             headers: {
                 Authorization: `Bearer ${user.access_token}`,
                 Accept: 'application/json'
@@ -34,6 +34,7 @@ export default function GoogleOAuth() {
             setProfile(res.data);
             localStorage.setItem('email', res.data.email)
             localStorage.setItem('token', user.access_token)
+            localStorage.setItem('user', user)
             routerService.moveToProductos();
         }).catch((err) => console.log(err));
         }
