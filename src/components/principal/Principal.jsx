@@ -1,6 +1,5 @@
 import React from 'react'
 import GoogleOAuth from '../oauth/GoogleOauth'
-import Logo from '../../assets/images/logo.png'
 import '../../assets/css/IntroPage.css'
 
 export default function IntroPage() {
@@ -20,7 +19,6 @@ export default function IntroPage() {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src={Logo} alt="..." /></div>
                     </div>
                 </div>
             </header>

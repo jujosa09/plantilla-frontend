@@ -12,7 +12,6 @@ export default function paginaProductos({ misProductos }) {
     const usuario = localStorage.getItem("email")
     const [productos, setProductos] = useState([]);
     const [filtrando, setFiltrando] = useState(false);
-    const [coordenadas, setCoordenadas] = useState([]);
 
     useEffect(() => {
         if (misProductos) {
@@ -21,10 +20,6 @@ export default function paginaProductos({ misProductos }) {
             productoService.getProductos(setProductos);
         }
     }, []);
-
-    useEffect(() => {
-        productoService.getCoordenadasListByCodPostal(productos, setCoordenadas)
-    }, [productos])
 
     return(
         <>
@@ -78,9 +73,9 @@ export default function paginaProductos({ misProductos }) {
             </div>
             <section className="py-5 bg-light">
                 <section className='map-section'>
-                {coordenadas.length !== 0?
+                {productos.length !== 0?
                     <>
-                    <GMap locations={[coordenadas]}/>
+                    <GMap locations={productos}/>
                     </>
                 :
                     <></>

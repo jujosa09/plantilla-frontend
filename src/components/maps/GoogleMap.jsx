@@ -3,9 +3,13 @@ import { GoogleMap, MarkerF, useLoadScript, InfoWindow } from '@react-google-map
 import { useMemo } from "react";
 import '../../assets/css/map.css'
 
-export default function GMap({ locations }) {
+export default function GMap({ productos }) {
     const { isLoaded } = useLoadScript({ googleMapsApiKey: 'AIzaSyCOT8uVlUdJC-W_c4JyNLObQNVycB2E5nY' })
     if (!isLoaded) return <div>Loading...</div>
+    let locations = []
+    productos.array.forEach(element => {
+      locations.push({lat: element.lat, long: element.lon})
+    });
 
     return (
       <>

@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Productos from './components/productos/paginaProductos.jsx'
-import Usuario from './components/usuarios/paginaUsuarios.jsx'
 import PaginaProducto from './components/productos/paginaProducto.jsx'
 import PaginaPrincipal from './components/principal/Principal.jsx'
 import App from './App.jsx'
@@ -20,16 +19,8 @@ const router = createBrowserRouter([
     element: <Productos />
   },
   {
-    path: '/misProductos',
-    element: <Productos misProductos={true}/>
-  },
-  {
     path: '/producto/:id',
     element: <PaginaProducto />
-  },
-  {
-    path: '/usuario/:correo',
-    element: <Usuario />
   },
   {
     path: '/upload_product/',

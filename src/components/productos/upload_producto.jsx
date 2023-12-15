@@ -52,12 +52,10 @@ export default function upload_product() {
 
                   const anuncio = {
                     nombre: nombre,
-                    precioInicial: precio,
-                    descripcion: descripcion,
-                    direccion: codPostal,
-                    usuario: correo,
+                    lugar: codPostal,
+                    organizador: correo,
                     imagen: selectedImagePath,
-                    fechaCierre: selectedDate
+                    timestamps: selectedDate
                   };
 
                   const resultado = await productoService.addProduct(anuncio);
@@ -65,13 +63,13 @@ export default function upload_product() {
                   if (resultado.status === 409) {
                     Swal.fire({
                       icon: 'error',
-                      title: 'No se puede publicar el producto',
+                      title: 'No se puede publicar el evento',
                       text: resultado.mensaje
                     })
                   } else {
                     Swal.fire({
                       icon: 'success',
-                      title: 'Producto publicado con éxito'
+                      title: 'Evento publicado con éxito'
                     }).then((result) => {
                       if (result.isConfirmed) {
                         routerService.moveToProductos();
@@ -99,28 +97,9 @@ export default function upload_product() {
                           <TextField
                             required
                             id="nombre"
-                            label="Nombre del producto"
+                            label="Nombre del evento"
                             variant="standard"
                             size="small"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-2"></div>
-                    </div>
-
-                    <br />
-
-                    <div className="row text-left">
-                      <div className="col-md-2"></div>
-                      <div className="col-md-8">
-                        <div>
-                          <TextField
-                            required
-                            id="precio"
-                            label="Precio del producto"
-                            variant="standard"
-                            size="small"
-                            inputProps={{ inputMode: 'numeric', pattern: '[0-9,.]*' }}
                           />
                         </div>
                       </div>
@@ -182,24 +161,6 @@ export default function upload_product() {
                             onChange={(e) => handleDateChange(e.target.value)}
                             variant="standard"
                             size="small"
-                          />
-                        </div>
-                      </div>
-                      <div className="col-md-2"></div>
-                    </div>
-
-                    <br />
-
-                    <div className="row text-left">
-                      <div className="col-md-2"></div>
-                      <div className="col-md-8">
-                        <div>
-                          <TextField
-                            id="descripcion"
-                            label="Descripción del producto"
-                            size="small"
-                            multiline
-                            rows={5}
                           />
                         </div>
                       </div>
