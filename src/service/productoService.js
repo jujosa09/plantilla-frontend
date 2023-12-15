@@ -4,7 +4,7 @@ const getProductos = async (setProductos, lugar) => {
     const config = {headers: {'Access-Control-Allow-Origin': '*'}};
     await Axios.get("https://plantilla-backend.vercel.app/evento/"+lugar,config)
     .then((res) => {
-        setProductos(res.data.eventos)
+        setProductos(res.data.evento)
     })
 }
 

@@ -12,14 +12,25 @@ export default function paginaProductos({ misProductos }) {
     const usuario = localStorage.getItem("email")
     const [productos, setProductos] = useState([]);
     const [filtrando, setFiltrando] = useState(false);
+    const [coordenadas, setCoordenadas] = useState([]);
 
     useEffect(() => {
         if (misProductos) {
             productoService.getProductosByUsuario(setProductos, usuario);
         } else {
             productoService.getProductos(setProductos);
+            console.log(productos)
         }
     }, []);
+
+    useEffect(() => {
+        const locations = productos.map(element => ({
+            lat: element.lat, 
+            lng: element.lon,
+            title: element.nombre 
+          }));
+        setCoordenadas(locations)
+    },[productos])
 
     return(
         <>
@@ -75,7 +86,7 @@ export default function paginaProductos({ misProductos }) {
                 <section className='map-section'>
                 {productos.length !== 0?
                     <>
-                    <GMap locations={productos}/>
+                    <GMap locations={coordenadas}/>
                     </>
                 :
                     <></>

@@ -43,11 +43,9 @@ export default function upload_product() {
             <form
               onSubmit={async (e) => {
                 const nombre = document.getElementById('nombre').value;
-                let precio = document.getElementById('precio').value;
-                const descripcion = document.getElementById('descripcion').value;
                 const codPostal = document.getElementById('codPostal').value;
 
-                if (nombre !== '' && precio !== '') {
+                if (nombre !== '') {
                   e.preventDefault();
 
                   const anuncio = {
@@ -55,7 +53,7 @@ export default function upload_product() {
                     lugar: codPostal,
                     organizador: correo,
                     imagen: selectedImagePath,
-                    timestamps: selectedDate
+                    timestamp: selectedDate
                   };
 
                   const resultado = await productoService.addProduct(anuncio);

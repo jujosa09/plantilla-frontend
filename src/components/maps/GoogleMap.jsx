@@ -3,13 +3,10 @@ import { GoogleMap, MarkerF, useLoadScript, InfoWindow } from '@react-google-map
 import { useMemo } from "react";
 import '../../assets/css/map.css'
 
-export default function GMap({ productos }) {
+export default function GMap({ locations }) {
     const { isLoaded } = useLoadScript({ googleMapsApiKey: 'AIzaSyCOT8uVlUdJC-W_c4JyNLObQNVycB2E5nY' })
-    if (!isLoaded) return <div>Loading...</div>
-    let locations = []
-    productos.array.forEach(element => {
-      locations.push({lat: element.lat, long: element.lon})
-    });
+    if (!isLoaded) return <div>Loading...</div>;
+   
 
     return (
       <>
@@ -28,14 +25,12 @@ function Map({ locations }) {
       if (locations.length === 0) {
         return { lat: 0, lng: 0 }; // Valor por defecto si no hay ubicaciones
       }
+      console.log(locations)
   
       // Calcula el centro promedio de todas las ubicaciones
-      if(locations === 1){
-        locations = locations[0]
-      }
 
       const sumLat = locations.reduce((acc, location) => acc + Number(location.lat), 0);
-      const sumLng = locations.reduce((acc, location) => acc + Number(location.long), 0);
+      const sumLng = locations.reduce((acc, location) => acc + Number(location.lng), 0);
       
       return {
         lat: Number(sumLat) / locations.length,
@@ -48,7 +43,7 @@ function Map({ locations }) {
       <GoogleMap zoom={10} center={center} mapContainerClassName="map-container">
         {locations.map((location, index) => (
           <MarkerF
-            position={{ lat: Number(location.lat) + index*0.0001, lng: Number(location.long) + index*0.0001 }}
+            position={{ lat: Number(location.lat) + index*0.0001, lng: Number(location.lng) + index*0.0001 }}
             label={{
               text: location.title,
               className: "marker-label"

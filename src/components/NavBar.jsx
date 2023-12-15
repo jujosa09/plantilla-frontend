@@ -17,10 +17,8 @@ export default function NavBar({ubicacion}) {
                     <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
                     <div className="collapse navbar-collapse" id="navbarResponsive">
                         <ul className="navbar-nav ms-auto">
-                            <li className="nav-item" style={{marginLeft: "20px"}}><a className={ubicacion === 'Productos'? 'nav-link active' : 'nav-link'} href="/productos">Productos</a></li>
-                            <li className="nav-item" style={{marginLeft: "20px"}}><a className={ubicacion === 'Subir Producto'? 'nav-link active' : 'nav-link'} href={"/upload_product/"}>Subir Producto</a></li> 
-                            <li className="nav-item" style={{marginLeft: "20px"}}> <a className={ubicacion === 'Mis Productos'? 'nav-link active' : 'nav-link'} href={"/misProductos"}>Mis productos</a></li> 
-                            <li className="nav-item" style={{marginLeft: "20px"}}><a className={ubicacion === 'Mi perfil'? 'nav-link active' : 'nav-link'} href={"/usuario/" + usuario}>Mi perfil</a></li>
+                            <li className="nav-item" style={{marginLeft: "20px"}}><a className={ubicacion === 'Eventos'? 'nav-link active' : 'nav-link'} href="/productos">Productos</a></li>
+                            <li className="nav-item" style={{marginLeft: "20px"}}><a className={ubicacion === 'Subir Evento'? 'nav-link active' : 'nav-link'} href={"/upload_product/"}>Subir Producto</a></li> 
                             <li className="nav-item" style={{marginLeft: "20px"}}><GoogleOAuth /></li>
                         </ul>
                     </div>
