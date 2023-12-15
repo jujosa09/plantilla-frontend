@@ -31,7 +31,7 @@ const addProduct = async (productoFormData) => {
   const deleteProduct = async (producto) => {
     try {
       const config = {headers: {'Access-Control-Allow-Origin': '*'}};
-      const response = await Axios.delete('https://plantilla-backend.vercel.app/producto/' + producto,config);
+      const response = await Axios.delete('https://plantilla-backend.vercel.app/evento/' + producto,config);
       return {status: response.data.status}
     } catch (error) {
         console.error('Error al eliminar el producto:', error);
